@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import Style from "./global.module.css"
+import "./app.css"
 
 function App() {
 
@@ -32,18 +34,25 @@ function App() {
 
   return (
     <>
-      <header>
-        <h1>React DO</h1>
-      </header>
-      <div>
-        <input type="text" name="tarefa" placeholder="Insira aqui sua tarefa" value={tarefa.texto} onChange={ (e) => setTarefas( { id: Math.random(), texto: e.target.value, status: false} )}/>
-        <button onClick={AddTarefa}>ADD</button>
-        
+      <div className={Style.primeiradiv} >
+        <input className={Style.caixatexto} type="text" name="tarefa" placeholder="Insira aqui sua tarefa" value={tarefa.texto} onChange={ (e) => setTarefas( { id: Math.random(), texto: e.target.value, status: false} )}/>
+        <div>
+          <button className={Style.btnadd} onClick={AddTarefa}>ADD</button>
+        </div>
       </div>
-      <div>
+      <div className={Style.segundadiv}>
+        <h3 className={Style.caixaescrita}>Tarefas à fazer:</h3>
+      </div>
+      <div className="teste">
         <ul>
         {listaTarefas.map( (item, index ) => (
-          <li key={index}>{item.texto}   <button onClick={ () => statusTarefa(item.id, item.status)}>{item.status ? "Concluida" : "Não concluida"}</button>  <button onClick={ () => excluirTarefa(item.id)}>Excluir</button></li>
+          <li className={item.status ? 'itemAtivo' : 'itemInativo'} key={index}>
+            <button className={Style.btncirculo} onClick={ () => statusTarefa(item.id, item.status)}>{item.status ? <i  className="fa-solid fa-circle" style={{color:'red'}}></i> : <i class="fa-regular fa-circle" style={{color:'white'}}></i>}</button>
+            <div className={Style.itemTexto}>
+              {item.texto}
+            </div>
+            <button className={Style.btnlixo} onClick={ () => excluirTarefa(item.id)}><i class="fa-solid fa-trash" style={{color:'white'}}></i></button>
+          </li>
         ))}
         </ul>
       </div>

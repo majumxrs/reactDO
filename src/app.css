@@ -1,0 +1,22 @@
+.itemAtivo{
+    text-decoration: line-through;
+    color:#818181;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.itemInativo{
+    color: white;
+    width: 75%;
+    margin: 0 auto;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.teste ul {
+    margin: 0;
+    padding: 0;
+}
